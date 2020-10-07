@@ -5,7 +5,7 @@
 
     <groupId>com.virtualpairprogrammers</groupId>
     <artifactId>telemetry</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>6.0.0</version>
     <packaging>jar</packaging>
 
     <name>telemetry</name>
@@ -103,38 +103,9 @@
                             <artifactId>spring-boot-configuration-processor</artifactId>
                         </exclude>
                     </excludes>
+                    <imageName>fabiosalasm/${project.artifactId}:${project.version}</imageName>
                 </configuration>
             </plugin>
-            <!--            <plugin>
-                            <groupId>io.fabric8</groupId>
-                            <artifactId>docker-maven-plugin</artifactId>
-                            <version>0.21.0</version>
-
-                            <configuration>
-                                &lt;!&ndash; <dockerHost>unix:///var/run/docker.sock</dockerHost> &ndash;&gt;
-                                <dockerHost>tcp://192.168.99.155:2376</dockerHost>
-                                <certPath>C:\cygwin64\home\Richard\.minikube\certs</certPath>
-
-                                <verbose>true</verbose>
-                                <extensions>true</extensions>
-
-                                <images>
-                                    <image>
-                                        <name>richardchesterwood/istio-fleetman-vehicle-telemetry</name>
-                                        <build>
-                                            <dockerFileDir>${project.basedir}/src/main/docker/</dockerFileDir>
-
-                                            <assembly>
-                                                <descriptorRef>artifact</descriptorRef>
-                                            </assembly>
-                                            <tags>
-                                                <tag>6</tag>
-                                            </tags>
-                                        </build>
-                                    </image>
-                                </images>
-                            </configuration>
-                        </plugin>-->
         </plugins>
     </build>
 
