@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>multimodule</artifactId>
+        <groupId>pe.fabiosalasm.learning.istio</groupId>
+        <version>2.0.0</version>
+    </parent>
+
+    <artifactId>commons</artifactId>
+    <name>${project.artifactId}</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.11.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>2.11.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.11.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-parameter-names</artifactId>
+            <version>2.11.2</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <configuration>
+                    <!-- Ya que no se desea armar una imagen de este modulo -->
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <!-- Configuracion solo si el proyecto fuera multimodulo o para composite builds -->
+            <!-- Este plugin permite que todos los modulos que dependan de este puedan armar una imagen docker
+            facilmente reproducible. Mayor info: https://github.com/GoogleContainerTools/jib/tree/master/examples/multi-module -->
+            <plugin>
+                <groupId>io.github.zlika</groupId>
+                <artifactId>reproducible-build-maven-plugin</artifactId>
+                <version>0.11</version>
+                <executions>
+                    <execution>
+                        <id>run-when-packaged</id>
+                        <goals>
+                            <goal>strip-jar</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

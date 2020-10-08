@@ -1,0 +1,23 @@
+server:
+  servlet:
+    jsp:
+      registered: off
+  port: 8090
+spring:
+  application:
+    name: "position-receiver"
+  sleuth:
+    enabled: on
+  jackson:
+    time-zone: "America/Lima"
+    serialization:
+      write-dates-as-timestamps: false
+logging:
+  level:
+    com.virtualpairprogrammers.tracker.externalservices.StaffClient: DEBUG
+    com.virtualpairprogrammers.tracker.externalservices.VehicleTelemetryClient: DEBUG
+#-----
+vehicle-telemetry:
+  url: "http://localhost:8100"
+staff-management-service:
+  url: "http://localhost:8110"

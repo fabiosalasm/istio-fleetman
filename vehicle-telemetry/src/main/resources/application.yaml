@@ -1,0 +1,15 @@
+server:
+  servlet:
+    jsp:
+      registered: off
+  port: 8100
+spring:
+  application:
+    name: "vehicle-telemetry"
+  sleuth:
+    enabled: on
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: on

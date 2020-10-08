@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: "position-simulator"
+  sleuth:
+    enabled: on
+    feign:
+      enabled: on
+position-receiver-service:
+  url: "http://localhost:8090"

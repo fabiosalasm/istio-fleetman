@@ -1,0 +1,16 @@
+server:
+  servlet:
+    jsp:
+      registered: off
+  port: 8110
+spring:
+  application:
+    name: "staff-management"
+  sleuth:
+    enabled: on
+logging:
+  level:
+    com.virtualpairprogrammers.staffmanagement.service.ExternalServiceClient: DEBUG
+#-----
+driver-monitoring-service:
+  url: "https://httpbin.org"
